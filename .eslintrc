@@ -1,0 +1,50 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+
+  "extends": [
+    "plugin:prettier-vue/recommended",
+    "plugin:vue/vue3-strongly-recommended",
+
+    // "@vue/prettier/@typescript-eslint",
+    "@vue/typescript/recommended"
+  ],
+
+  "root": true,
+
+  "rules": {
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/consistent-type-imports": "error",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-var-requires": "off",
+
+    "no-console": "off",
+    "no-debugger": "off",
+
+    "vue/attributes-order": ["error", {
+      "alphabetical": true
+    }],
+
+    "vue/max-attributes-per-line": ["error", {
+      "singleline": 3
+    }],
+
+    "vue/multi-word-component-names": "off",
+
+    "vue/no-mutating-props": "off",
+    "vue/one-component-per-file": "off",
+
+    "vue/valid-define-props": "off"
+  },
+
+  "settings": {
+    "prettier-vue": {
+      "SFCBlocks": {
+        "template": false
+      }
+    }
+  }
+}

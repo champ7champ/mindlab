@@ -3,7 +3,7 @@ import Button from '@/components/ui/button/Button.vue'
 import Input from '@/components/ui/input/Input.vue'
 import { ref } from 'vue'
 
-const emits = defineEmits(['changeTitle'])
+const emits = defineEmits(['changeTitle', 'deletePost'])
 
 const props = defineProps({
   post: {
@@ -33,6 +33,10 @@ function toggleChangeable() {
     newTitleValue.value = props.post.title
   }
 }
+
+function deletePost() {
+  emits('deletePost', props.post.id)
+}
 </script>
 
 <template>
@@ -61,6 +65,10 @@ function toggleChangeable() {
         @click="isChangeable = !isChangeable"
       >
         Отменить изменения
+      </Button>
+      
+      <Button variant="destructive" @click="deletePost">
+        Удалить пост
       </Button>
     </div>
   </div>

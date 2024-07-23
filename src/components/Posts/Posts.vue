@@ -2,7 +2,7 @@
 import type { PropType } from 'vue'
 import Post from '@/components/Post/Post.vue'
 
-const emits = defineEmits(['changeTitle'])
+const emits = defineEmits(['changeTitle', 'deletePost'])
 
 const props = defineProps({
   posts: {
@@ -24,6 +24,10 @@ const props = defineProps({
 function handleChangeTitle(updatedPost: { id: number; title: string; body: string }, postId: number) {
   emits('changeTitle', updatedPost, postId)
 }
+
+function deletePost(id: number) {
+  emits('deletePost', id)
+}
 </script>
 
 <template>
@@ -34,6 +38,7 @@ function handleChangeTitle(updatedPost: { id: number; title: string; body: strin
         :key="post.id"
         :post="post"
         @change-title="handleChangeTitle"
+        @delete-post="deletePost"
       />
     </div>
 

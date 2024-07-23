@@ -40,6 +40,16 @@ function updatePost(updatedPost: { id: number; title: string; body: string }, po
   }
 }
 
+function deletePost(id: number) {
+  if (!posts.value) return
+
+  const postIndex = posts.value.findIndex((post) => post.id === id)
+
+  if (postIndex !== -1) {
+    posts.value.splice(postIndex, 1)
+  }
+}
+
 onMounted(async () => {
   isLoading.value = true
 
@@ -114,6 +124,7 @@ onMounted(async () => {
       :is-loading="isLoading"
       :posts="posts"
       @change-title="updatePost"
+      @delete-post="deletePost"
     />
   </main>
 </template>
